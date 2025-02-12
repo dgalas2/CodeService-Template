@@ -24,7 +24,7 @@ async def run_on_nova():
 	await apps.run_function_app(app)
 
 def main():
-    asyncio.run(main())
+    asyncio.run(run_on_nova())
 
 if __name__ == "__main__":
     # Use this for nova platform
