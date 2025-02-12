@@ -20,12 +20,15 @@ async def singlestore():
     return await get_message()
 
 
-async def main():
+async def run_on_nova():
 	await apps.run_function_app(app)
+
+def main():
+    asyncio.run(main())
 
 if __name__ == "__main__":
     # Use this for nova platform
-	asyncio.run(main())
+	main()
       
 #for local development use: (replace s2_codeservice_template with parent folder name of this file)
 #uvicorn.run("s2_codeservice_template.__init__:app", host="127.0.0.1", port=5678, reload=False)
