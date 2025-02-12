@@ -1,0 +1,14 @@
+{
+	"project_name":"s2-codeservice-template",
+	"author":"S2DefaultAuthorName",
+	"version":"1.0.0",
+	"python_version":"^3.11",
+	"requirements":"./requirements.txt",
+	"entry_point":"./s2-codeservice-template/s2_codeservice_template/__init__.py",
+	"env":"./s2-codeservice-template/.env",
+	"app":"",
+	"readme":"./s2-codeservice-template/README.md",
+	"poetryFile":"./s2-codeservice-template/pyproject.toml",
+	"test":"./s2-codeservice-template/tests",
+	"poetry":true
+}
