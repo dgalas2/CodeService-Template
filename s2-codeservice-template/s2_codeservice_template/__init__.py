@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from s2 import get_message
 import singlestoredb.apps as apps
 import asyncio
+import uvicorn
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -22,12 +23,17 @@ async def singlestore():
 
 async def run_on_nova():
 	await apps.run_function_app(app)
+      
+def run_on_local():
+    uvicorn.run("s2_codeservice_template.__init__:app", host=os.getenv('HOST'), port=os.getenv('PORT'), reload=False)
 
 def main():
+    # Use this for nova platform
     asyncio.run(run_on_nova())
+    # This is for local development
+    # run_on_local()
 
 if __name__ == "__main__":
-    # Use this for nova platform
 	main()
       
 #for local development use: (replace s2_codeservice_template with parent folder name of this file)
