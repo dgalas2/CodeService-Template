@@ -1,7 +1,15 @@
+'''
+Poetry Script for local development: 
+	poetry run local-dev
+	
+HOST and PORT variables can be defined using the ../.env file.
+
+'''
+
+
 import os
 from fastapi import FastAPI
 from s2 import get_message
-import singlestoredb.apps as apps
 import asyncio
 import uvicorn
 
@@ -22,6 +30,7 @@ async def singlestore():
 
 
 async def run_on_nova():
+	import singlestoredb.apps as apps
 	await apps.run_function_app(app)
       
 def run_on_local():
@@ -35,7 +44,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
-      
-#for local development use: (replace s2_codeservice_template with parent folder name of this file)
-#uvicorn.run("s2_codeservice_template.__init__:app", host="127.0.0.1", port=5678, reload=False)
 

@@ -10,5 +10,5 @@
   requires-python = "^3.11" 
   version = "1.0.0"
   [project.scripts]
-    nova-entry = "s2_codeservice_template:main"
-    local-entry = "s2_codeservice_template:run_on_local"
+    nova = "s2_codeservice_template:main"
+    local-dev = "s2_codeservice_template:run_on_local"
