@@ -7,7 +7,7 @@
   description = ""
   name = "s2-codeservice-template"
   readme = "README.md"
-  requires-python = "^3.11" 
+  requires-python = ">=3.9" 
   version = "1.0.0"
   [project.scripts]
     nova = "s2_codeservice_template:main"

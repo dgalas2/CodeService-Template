@@ -9,14 +9,16 @@ HOST and PORT variables can be defined using the ../.env file.
 
 import os
 from fastapi import FastAPI
-from s2_codeservice_template import db
+from s2_codeservice_template import database
 import asyncio
 import uvicorn
 from pydantic import BaseModel
 
 from dotenv import load_dotenv
 load_dotenv()
-
+connection_url = f'singlestoredb://{os.environ.get("USER_NAME")}:{os.environ.get("PASSWORD")}@{os.environ.get("DML_ENDPOINT")}/{os.environ.get("DATABSE_NAME")}'
+os.environ["SINGLESTOREDB_URL"] = connection_url
+os.environ["DATABASE_URL"] = connection_url
 
 class Book(BaseModel):
     name: str
@@ -25,6 +27,9 @@ class Book(BaseModel):
 
 # Create a FastAPI application
 app = FastAPI()
+
+#create db object
+db = database.DB(connection_url)
  
 # Define a route at the root web address ("/")
 @app.get("/")

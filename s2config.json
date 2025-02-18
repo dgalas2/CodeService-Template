@@ -10,5 +10,6 @@
 	"readme":"./s2-codeservice-template/README.md",
 	"poetryFile":"./s2-codeservice-template/pyproject.toml",
 	"test":"./s2-codeservice-template/tests",
-	"poetry":true
+	"poetry":true,
+	"database": ""
 }
