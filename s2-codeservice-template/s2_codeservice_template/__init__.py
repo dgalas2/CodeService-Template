@@ -53,21 +53,13 @@ async def insert(book: Book):
 
 
 
-async def run_on_nova():
-    _, task = await apps.run_function_app(app)
-    await asyncio.wait_for(task,timeout=None)
+async def run_codeservice():
+    await apps.run_function_app(app,wait_for_exit=True)
+    # await task
       
-def run_on_local():
-
-    uvicorn.run("s2_codeservice_template.__init__:app", host=os.getenv(env+'_BASE_URL'), port=os.getenv(env+'_LISTEN_PORT'), reload=False)
-
 def main():
-    # Use this for nova platform
-    asyncio.run(run_on_nova())
-    # This is for local development
-    # run_on_local()
+    asyncio.run(run_codeservice())
 
 if __name__ == "__main__":
-	# asyncio.run(run_on_nova())
     main()
 
