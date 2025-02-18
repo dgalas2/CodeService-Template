@@ -4,6 +4,16 @@ from dotenv import load_dotenv
 from s2_codeservice_template import singleton
 load_dotenv()
 
+def getEnvName(env):
+	if env=="":
+		return ""
+	else:
+		return env + "_"
+
+def getConnectionString(env):
+	connection_url = f'singlestoredb://{os.environ.get(getEnvName(env)+"DB_USER_NAME")}:{os.environ.get(getEnvName(env)+"DB_PASSWORD")}@{os.environ.get(getEnvName(env)+"DML_HOST")}:{os.environ.get(getEnvName(env)+"DML_PORT")}/{os.environ.get(getEnvName(env)+"DATABSE_NAME")}'
+	return connection_url
+
 class DB(metaclass=singleton.Singleton):
 	def __init__(self,conn_url):
 		self.conn = s2.connect(conn_url)

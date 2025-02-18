@@ -13,10 +13,16 @@ from s2_codeservice_template import database
 import asyncio
 import uvicorn
 from pydantic import BaseModel
-
+import singlestoredb.apps as apps
 from dotenv import load_dotenv
 load_dotenv()
-connection_url = f'singlestoredb://{os.environ.get("USER_NAME")}:{os.environ.get("PASSWORD")}@{os.environ.get("DML_ENDPOINT")}/{os.environ.get("DATABSE_NAME")}'
+
+# if you do not want to use different db for different env, just set env = "",
+# OR do not set variable ENV in .env file
+env = os.environ.get("ENV")
+connection_url = database.getConnectionString(env)
+
+# only one DB connection string can exist in OS at one time. TODO: change it such that we can use multiple, thus being able to run multiple projects together on local
 os.environ["SINGLESTOREDB_URL"] = connection_url
 os.environ["DATABASE_URL"] = connection_url
 
@@ -48,12 +54,12 @@ async def insert(book: Book):
 
 
 async def run_on_nova():
-	import singlestoredb.apps as apps
-	await apps.run_function_app(app)
+    _, task = await apps.run_function_app(app)
+    await asyncio.wait_for(task,timeout=None)
       
 def run_on_local():
 
-    uvicorn.run("s2_codeservice_template.__init__:app", host=os.getenv('HOST'), port=os.getenv('PORT'), reload=False)
+    uvicorn.run("s2_codeservice_template.__init__:app", host=os.getenv(env+'_BASE_URL'), port=os.getenv(env+'_LISTEN_PORT'), reload=False)
 
 def main():
     # Use this for nova platform
@@ -62,5 +68,6 @@ def main():
     # run_on_local()
 
 if __name__ == "__main__":
-	main()
+	# asyncio.run(run_on_nova())
+    main()
 
