@@ -55,7 +55,6 @@ async def insert(book: Book):
 
 async def run_codeservice():
     await apps.run_function_app(app,wait_for_exit=True)
-    # await task
       
 def main():
     asyncio.run(run_codeservice())

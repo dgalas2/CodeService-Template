@@ -5,7 +5,7 @@ from s2_codeservice_template import singleton
 load_dotenv()
 
 def getEnvName(env):
-	if env=="":
+	if env=="" or env==None:
 		return ""
 	else:
 		return env + "_"
