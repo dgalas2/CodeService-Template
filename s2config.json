@@ -5,7 +5,7 @@
 	"python_version":"^3.11",
 	"entry_point":"my-app",
 	"app":"CodeService",
-	"readme":"./s2-codeservice-template/README.md",
+	"readme":"./README.md",
 	"poetryFile":"./s2-codeservice-template/pyproject.toml",
 	"test":"./s2-codeservice-template/tests",
 	"poetry":true,
