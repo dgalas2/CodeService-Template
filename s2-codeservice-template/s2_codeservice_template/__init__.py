@@ -15,7 +15,7 @@ import uvicorn
 from pydantic import BaseModel
 import singlestoredb.apps as apps
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(".env")
 
 # if you do not want to use different db for different env, just set env = "",
 # OR do not set variable ENV in .env file
