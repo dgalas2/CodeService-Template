@@ -6,10 +6,10 @@
 	"requirements":"./requirements.txt",
 	"entry_point":"./s2-codeservice-template/s2_codeservice_template/__init__.py",
 	"env":"./s2-codeservice-template/.env",
-	"app":"",
+	"app":"CodeService",
 	"readme":"./s2-codeservice-template/README.md",
 	"poetryFile":"./s2-codeservice-template/pyproject.toml",
 	"test":"./s2-codeservice-template/tests",
 	"poetry":true,
-	"database": ""
+	"database": "db1"
 }
