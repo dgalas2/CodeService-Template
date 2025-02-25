@@ -21,7 +21,7 @@ load_dotenv(".env")
 # OR do not set variable ENV in .env file
 env = os.environ.get("ENV")
 
-if env == 'SINGLESTOREDB_APP' or env==None:
+if env != 'SINGLESTOREDB_APP' or env!=None:
 
     connection_url = database.getConnectionString(env)
 
