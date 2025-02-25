@@ -20,15 +20,15 @@ load_dotenv(".env")
 # if you do not want to use different db for different env, just set env = "",
 # OR do not set variable ENV in .env file
 env = os.environ.get("ENV")
-
-if env != 'SINGLESTOREDB_APP' or env!=None:
+print(env)
+if env != 'SINGLESTOREDB_APP' and env!=None:
 
     connection_url = database.getConnectionString(env)
 
     # only one DB connection string can exist in OS at one time. TODO: change it such that we can use multiple, thus being able to run multiple projects together on local
     os.environ["SINGLESTOREDB_URL"] = connection_url
     os.environ["DATABASE_URL"] = connection_url
-
+print(os.environ["SINGLESTOREDB_URL"])
 class Book(BaseModel):
     name: str
     isbn: str
