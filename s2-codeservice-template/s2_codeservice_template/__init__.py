@@ -38,7 +38,7 @@ class Book(BaseModel):
 app = FastAPI()
 
 #create db object
-db = database.DB(connection_url)
+db = database.DB(os.environ["SINGLESTOREDB_URL"])
  
 # Define a route at the root web address ("/")
 @app.get("/")
