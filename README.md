@@ -29,7 +29,7 @@ s2-codeservice-template
 ## Setting up project
 1. Go to project folder
 ```
-cd ./s2_codeservice_template
+cd ./s2-codeservice-template
 ```
 2. Install dependencies using poetry
 ```
