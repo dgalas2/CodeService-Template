@@ -22,7 +22,7 @@ RUN /bin/poetry install
 CMD ["/bin/poetry","run","my-app"]
 
 # expose port 8050 for codeservice
-EXPOSE 8050/tcp
+EXPOSE 9010/tcp
 
 
 
